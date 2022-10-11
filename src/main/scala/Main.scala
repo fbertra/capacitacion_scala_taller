@@ -1,3 +1,4 @@
+import cl.fbd.capacitacion_scala.taller.FileOps
 object Main extends App {
   if (args.length == 0) {
         println("Uso... <directorio con archivos>")
@@ -15,8 +16,10 @@ object Main extends App {
 
   val files = dir.listFiles  
 
-  for (file <- files) {
-    println (s"procesando $file")
+  val mapa = FileOps.addFiles (files)
+
+  for ((fecha, files) <- mapa) {
+    println (s"$fecha -> ${files.mkString ("; ")}")
   }
 
   println ("fin procesao")
