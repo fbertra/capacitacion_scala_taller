@@ -19,10 +19,16 @@ object FileOps {
       .toMap
   }
 
-  def writeFile (fecha: String, files: List [String]) = {
-    val out = new java.io.PrintWriter (new java.io.FileOutputStream (s"${fecha}.txt"))
+  def writeFile (fecha: String, files: List [java.io.File]) = {
+    val nameOut = s"${fecha}.txt"
+
+    println (s"Creando salida $nameOut")
+
+    val out = new java.io.PrintWriter (new java.io.FileOutputStream (nameOut))
 
     for (file <- files) {
+        println (s"procesando ${file.getName()}")
+
         val iter = Source.fromFile (file).getLines
 
         appendFile (out, iter)

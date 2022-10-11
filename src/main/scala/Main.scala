@@ -19,7 +19,8 @@ object Main extends App {
   val mapa = FileOps.addFiles (files)
 
   for ((fecha, files) <- mapa) {
-    println (s"$fecha -> ${files.mkString ("; ")}")
+    // println (s"$fecha -> ${files.mkString ("; ")}")
+    FileOps.writeFile(fecha, files)
   }
 
   println ("fin procesao")
